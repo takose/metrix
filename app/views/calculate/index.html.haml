@@ -1,0 +1,28 @@
+%h1 Calculate
+- if @error
+  %p= @error
+%h2 sum
+= form_tag 'calculate/sum' do
+  = text_area_tag 'metrix_a'
+  = text_area_tag 'metrix_b'
+  = submit_tag 'calculate'
+
+- if @sum
+  %table
+    - @sum.each do |row|
+      %tr
+        - row.each do |column|
+          %td= column
+
+%h2 prod
+= form_tag 'calculate/prod' do
+  = text_area_tag 'metrix_a'
+  = text_area_tag 'metrix_b'
+  = submit_tag 'calculate'
+
+- if @prod
+  %table
+    - @prod.each do |row|
+      %tr
+        - row.each do |column|
+          %td= column
