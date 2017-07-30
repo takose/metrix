@@ -5,9 +5,9 @@
 
 %h2 sum
 = form_tag 'calculate/sum' do
-  = text_area_tag 'metrix_a'
-  = text_area_tag 'metrix_b'
-  = submit_tag 'calculate'
+  = text_area_tag 'metrix_a', '', class: 'text-box', size: '30x5'
+  = text_area_tag 'metrix_b', '', class: 'text-box', size: '30x5'
+  = submit_tag 'calculate', class: 'button'
 
 - if @sum
   %table
@@ -18,9 +18,9 @@
 
 %h2 prod
 = form_tag 'calculate/prod' do
-  = text_area_tag 'metrix_a'
-  = text_area_tag 'metrix_b'
-  = submit_tag 'calculate'
+  = text_area_tag 'metrix_a', '', class: 'text-box', size: '30x5'
+  = text_area_tag 'metrix_b', '', class: 'text-box', size: '30x5'
+  = submit_tag 'calculate', class: 'button'
 
 - if @prod
   %table
@@ -29,46 +29,73 @@
         - row.each do |column|
           %td= column
 
-%h1 sum history
-- @sum_histories.each do |history|
-  .history
-    %table
-      - history.metrix_a.split("\r\n").each do |row|
-        %tr
-          - row.split(' ').each do |column|
-            %td
-              = column
-    %table
-      - history.metrix_b.split("\r\n").each do |row|
-        %tr
-          - row.split(' ').each do |column|
-            %td
-              = column
-    %table
-      - history.result.split("\r\n").each do |row|
-        %tr
-          - row.split(' ').each do |column|
-            %td
-              = column
+%h2 sum history
+.histories
+  - @sum_histories.each do |history|
+    .history
+      .table
+        %table
+          - history.metrix_a.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
 
-%h1 prod history
-- @prod_histories.each do |history|
-  .history
-    %table
-      - history.metrix_a.split("\r\n").each do |row|
-        %tr
-          - row.split(' ').each do |column|
-            %td
-              = column
-    %table
-      - history.metrix_b.split("\r\n").each do |row|
-        %tr
-          - row.split(' ').each do |column|
-            %td
-              = column
-    %table
-      - history.result.split("\r\n").each do |row|
-        %tr
-          - row.split(' ').each do |column|
-            %td
-              = column
+      .sign
+        +
+
+      .table
+        %table
+          - history.metrix_b.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
+
+      .sign
+        \=
+
+
+      .table
+        %table
+          - history.result.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
+
+%h2 prod history
+.histories
+  - @prod_histories.each do |history|
+    .history
+      .table
+        %table
+          - history.metrix_a.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
+
+      .sign
+        x
+
+
+      .table
+        %table
+          - history.metrix_b.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
+
+      .sign
+        \=
+
+
+      .table
+        %table
+          - history.result.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
