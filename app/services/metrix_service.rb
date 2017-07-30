@@ -1,3 +1,33 @@
+# class matrix{
+#   float [][] c;
+#   int n,m;// float c[n][m]
+#   matrix(){
+#     c=null;
+#     n=m=0;
+#   }
+#   matrix(float [][]_c ,int _n, int _m){
+#     n=_n;
+#     m=_m;
+#     c=new float[n][m];
+#     for(int x=0; x<m; x++){
+#       for(int y=0; y<n; y++){
+#         c[y][x] = _c[y][x];
+#       }
+#     }
+#   }
+#   String toString(){
+#     String ret = "";
+#       for(int y=0; y<n; y++){
+#         ret += "[";
+#         for(int x=0; x<m; x++){
+#           ret += c[y][x];
+#           if(x<m-1) ret += ",";
+#         }
+#         ret += "]\r\n";
+#       }
+#     return ret;
+#   }
+# }
 class MetrixService
   attr_reader :c, :n, :m
   attr_accessor :error
@@ -13,6 +43,7 @@ class MetrixService
     @error = nil
   end
 
+  def self.sum(a, b)
   # if(a.n!=b.n || a.m!=b.m) return new matrix();
   #   int n = a.n;
   #   int m = b.m;
@@ -23,8 +54,6 @@ class MetrixService
   #     }
   #   }
   #     return new matrix(_c,n,m);
-
-  def self.sum(a, b)
     n = a.n
     m = b.m
     _c = []
@@ -46,6 +75,7 @@ class MetrixService
     MetrixService.new(_c)
   end
 
+  def self.prod(a, b)
   # if(a.m!=b.n) return new matrix();
   #   int n = a.n;
   #   int m = a.m;
@@ -60,8 +90,6 @@ class MetrixService
   #     }
   #   }
   #     return new matrix(_c,n,m);
-
-  def self.prod(a, b)
     n = a.n
     m = b.m
     k = a.m
