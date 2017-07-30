@@ -10,6 +10,7 @@ RSpec.describe MetrixService do
         [1, 5, 3]
       ]
     )}
+
     let (:metrix_b) { MetrixService.new(
       [
         [-1, -2, 3],
@@ -18,11 +19,18 @@ RSpec.describe MetrixService do
         [3, 2, -1]
       ]
     )}
+
     let (:metrix_c) { MetrixService.new(
       [
         [1, 2, 0],
         [0, 3, -4],
         [0, 0, -2]
+      ]
+    )}
+
+    let (:metrix_d) { MetrixService.new(
+      [
+        [1, 2]
       ]
     )}
 
@@ -49,6 +57,16 @@ RSpec.describe MetrixService do
         [4, 7, 2]
       ]
       expect(@sum_metrix.c.transpose).to eq(answer)
+    end
+
+    it "can't calculate with different size metrixes" do
+      error_metrix = MetrixService.prod(metrix_a, metrix_d)
+      expect(error_metrix.error).to eq("行列のサイズが正しくありません")
+    end
+
+    it "can't calculate with different size metrixes" do
+      error_metrix = MetrixService.sum(metrix_a, metrix_d)
+      expect(error_metrix.error).to eq("行列のサイズが正しくありません")
     end
   end
 end
