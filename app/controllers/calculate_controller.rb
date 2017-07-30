@@ -7,7 +7,7 @@ class CalculateController < ApplicationController
 
   def sum
     unless params[:metrix_a].empty? || params[:metrix_b].empty?
-      r = /[^\d||\s]/
+      r = /[^\d||\s||[-]]/
       if r.match(params[:metrix_a]) || r.match(params[:metrix_b])
         @error = '書式が正しくありません'
       else
@@ -33,7 +33,7 @@ class CalculateController < ApplicationController
 
   def prod
     unless params[:metrix_a].empty? || params[:metrix_b].empty?
-      r = /[^\d||\s]/
+      r = /[^\d||\s||[-]]/
       if r.match(params[:metrix_a]) || r.match(params[:metrix_b])
         @error = '書式が正しくありません'
       else

@@ -117,6 +117,18 @@ class MetrixService
   end
 
   def build_string
+    # String toString(){
+    #   String ret = "";
+    #   for(int y=0; y<n; y++){
+    #     ret += "[";
+    #     for(int x=0; x<m; x++){
+    #       ret += c[y][x];
+    #       if(x<m-1) ret += ",";
+    #     }
+    #       ret += "]\r\n";
+    #   }
+    #     return ret;
+    # }
     _ = []
     c.each do |_c|
       _ << _c.join(' ')
