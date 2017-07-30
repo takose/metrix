@@ -1,6 +1,8 @@
 %h1 Calculate
+
 - if @error
   %p= @error
+
 %h2 sum
 = form_tag 'calculate/sum' do
   = text_area_tag 'metrix_a'
@@ -26,3 +28,47 @@
       %tr
         - row.each do |column|
           %td= column
+
+%h1 sum history
+- @sum_histories.each do |history|
+  .history
+    %table
+      - history.metrix_a.split("\r\n").each do |row|
+        %tr
+          - row.split(' ').each do |column|
+            %td
+              = column
+    %table
+      - history.metrix_b.split("\r\n").each do |row|
+        %tr
+          - row.split(' ').each do |column|
+            %td
+              = column
+    %table
+      - history.result.split("\r\n").each do |row|
+        %tr
+          - row.split(' ').each do |column|
+            %td
+              = column
+
+%h1 prod history
+- @prod_histories.each do |history|
+  .history
+    %table
+      - history.metrix_a.split("\r\n").each do |row|
+        %tr
+          - row.split(' ').each do |column|
+            %td
+              = column
+    %table
+      - history.metrix_b.split("\r\n").each do |row|
+        %tr
+          - row.split(' ').each do |column|
+            %td
+              = column
+    %table
+      - history.result.split("\r\n").each do |row|
+        %tr
+          - row.split(' ').each do |column|
+            %td
+              = column

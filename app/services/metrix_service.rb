@@ -115,4 +115,12 @@ class MetrixService
     end
     MetrixService.new(_c)
   end
+
+  def build_string
+    _ = []
+    c.each do |_c|
+      _ << _c.join(' ')
+    end
+    _.join("\r\n")
+  end
 end

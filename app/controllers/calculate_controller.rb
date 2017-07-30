@@ -1,6 +1,8 @@
 class CalculateController < ApplicationController
   before_action :set_metrix, only: [:sum, :prod]
   def index
+    @sum_histories = SumHistory.all
+    @prod_histories = ProdHistory.all
   end
 
   def sum
@@ -9,7 +11,14 @@ class CalculateController < ApplicationController
       @error = sum_metrix.error
     else
       @sum = sum_metrix.c.transpose
+      SumHistory.create(
+        metrix_a: @metrix_a.build_string,
+        metrix_b: @metrix_b.build_string,
+        result: build_string(@sum)
+      )
     end
+    @sum_histories = SumHistory.all
+    @prod_histories = ProdHistory.all
     render :index
   end
 
@@ -19,8 +28,14 @@ class CalculateController < ApplicationController
       @error = prod_metrix.error
     else
       @prod = prod_metrix.c.transpose
-      p @prod
+      ProdHistory.create(
+        metrix_a: @metrix_a.build_string,
+        metrix_b: @metrix_b.build_string,
+        result: build_string(@prod)
+      )
     end
+    @sum_histories = SumHistory.all
+    @prod_histories = ProdHistory.all
     render :index
   end
 
@@ -38,4 +53,13 @@ class CalculateController < ApplicationController
     end
     metrix
   end
+
+  def build_string(c)
+    _ = []
+    c.each do |_c|
+      _ << _c.join(' ')
+    end
+    _.join("\r\n")
+  end
+
 end
