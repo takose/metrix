@@ -27,7 +27,8 @@ RSpec.describe MetrixService do
     )}
 
     before do
-      @sum_metrix = MetrixService.prod(metrix_a, metrix_c)
+      @prod_metrix = MetrixService.prod(metrix_a, metrix_c)
+      @sum_metrix = MetrixService.sum(metrix_a, metrix_b)
     end
 
     it 'calculate prod certainly' do
@@ -37,7 +38,7 @@ RSpec.describe MetrixService do
         [4, 17, -16],
         [1, 17, -26]
       ]
-      expect(@sum_metrix.c.transpose).to eq(answer)
+      expect(@prod_metrix.c.transpose).to eq(answer)
     end
 
     it 'calculate sum certainly' do
