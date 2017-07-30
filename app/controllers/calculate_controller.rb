@@ -6,16 +6,25 @@ class CalculateController < ApplicationController
   end
 
   def sum
-    sum_metrix = MetrixService.sum(@metrix_a, @metrix_b)
-    if sum_metrix.error
-      @error = sum_metrix.error
+    unless params[:metrix_a].empty? || params[:metrix_b].empty?
+      r = /[^\d||\s]/
+      if r.match(params[:metrix_a]) || r.match(params[:metrix_b])
+        @error = '書式が正しくありません'
+      else
+        sum_metrix = MetrixService.sum(@metrix_a, @metrix_b)
+        if sum_metrix.error
+          @error = sum_metrix.error
+        else
+          @sum = sum_metrix.c.transpose
+          SumHistory.create(
+            metrix_a: @metrix_a.build_string,
+            metrix_b: @metrix_b.build_string,
+            result: build_string(@sum)
+          )
+        end
+      end
     else
-      @sum = sum_metrix.c.transpose
-      SumHistory.create(
-        metrix_a: @metrix_a.build_string,
-        metrix_b: @metrix_b.build_string,
-        result: build_string(@sum)
-      )
+      @error = '行列を入力してください'
     end
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
@@ -23,16 +32,25 @@ class CalculateController < ApplicationController
   end
 
   def prod
-    prod_metrix = MetrixService.prod(@metrix_a, @metrix_b)
-    if prod_metrix.error
-      @error = prod_metrix.error
+    unless params[:metrix_a].empty? || params[:metrix_b].empty?
+      r = /[^\d||\s]/
+      if r.match(params[:metrix_a]) || r.match(params[:metrix_b])
+        @error = '書式が正しくありません'
+      else
+        prod_metrix = MetrixService.prod(@metrix_a, @metrix_b)
+        if prod_metrix.error
+          @error = prod_metrix.error
+        else
+          @prod = prod_metrix.c.transpose
+          ProdHistory.create(
+            metrix_a: @metrix_a.build_string,
+            metrix_b: @metrix_b.build_string,
+            result: build_string(@prod)
+          )
+        end
+      end
     else
-      @prod = prod_metrix.c.transpose
-      ProdHistory.create(
-        metrix_a: @metrix_a.build_string,
-        metrix_b: @metrix_b.build_string,
-        result: build_string(@prod)
-      )
+      @error = '行列を入力してください'
     end
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
