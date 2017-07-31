@@ -63,7 +63,7 @@
   = text_area_tag 'metrix', '', class: 'text-box', size: '30x5'
   = submit_tag 'calculate', class: 'button'
 
-- if @tr
+- if @tr && !@error
   = @tr
 
 
@@ -72,7 +72,7 @@
   = text_area_tag 'metrix', '', class: 'text-box', size: '30x5'
   = submit_tag 'calculate', class: 'button'
 
-- if @det
+- if @det && !@error
   = @det
 
 %h2 sum history

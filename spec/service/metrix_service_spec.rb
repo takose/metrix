@@ -59,6 +59,24 @@ RSpec.describe MetrixService do
       expect(@sum_metrix.c.transpose).to eq(answer)
     end
 
+    it 'calculate tr certainly' do
+      answer = 2
+      expect(metrix_c.tr).to eq(answer)
+    end
+
+    it 'calculate det certainly' do
+      answer = -6
+      expect(metrix_c.det).to eq(answer)
+    end
+
+    it "can'tcalculate tr certainly" do
+      expect(metrix_a.tr.error).to eq('行列のサイズが正しくありません')
+    end
+
+    it "can'tcalculate det certainly" do
+      expect(metrix_a.det.error).to eq('行列のサイズが正しくありません')
+    end
+
     it "can't calculate with different size metrixes" do
       error_metrix = MetrixService.prod(metrix_a, metrix_d)
       expect(error_metrix.error).to eq("行列のサイズが正しくありません")

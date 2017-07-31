@@ -128,7 +128,7 @@ class MetrixService
 
     if m != n
       @error = '行列のサイズが正しくありません'
-      c = MetrixService.new(_c)
+      c = MetrixService.new([])
       c.error = @error
       return c
     end
@@ -167,12 +167,12 @@ class MetrixService
       c[0][2] * c[1][1] * c[2][0]
     elsif n == m && n > 3
       @error = '行列のサイズが大きすぎます'
-      c = MetrixService.new(_c)
+      c = MetrixService.new([])
       c.error = @error
       return c
     else
       @error = '行列のサイズが正しくありません'
-      c = MetrixService.new(_c)
+      c = MetrixService.new([])
       c.error = @error
       return c
     end

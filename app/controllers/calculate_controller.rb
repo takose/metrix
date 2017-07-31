@@ -65,6 +65,9 @@ class CalculateController < ApplicationController
         @error = '書式が正しくありません'
       else
         @tr = @metrix.tr
+        if @tr.respond_to?(:error)
+          @error = @tr.error
+        end
       end
     else
       @error = '行列を入力してください'
@@ -82,6 +85,9 @@ class CalculateController < ApplicationController
         @error = '書式が正しくありません'
       else
         @det = @metrix.det
+        if @det.respond_to?(:error)
+          @error = @det.error
+        end
       end
     else
       @error = '行列を入力してください'
