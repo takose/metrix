@@ -42,6 +42,23 @@
         - row.each do |column|
           %td= column
 
+%h2 trace
+= form_tag 'calculate/tr' do
+  = text_area_tag 'metrix', '', class: 'text-box', size: '30x5'
+  = submit_tag 'calculate', class: 'button'
+
+- if @tr
+  = @tr
+
+
+%h2 det
+= form_tag 'calculate/det' do
+  = text_area_tag 'metrix', '', class: 'text-box', size: '30x5'
+  = submit_tag 'calculate', class: 'button'
+
+- if @det
+  = @det
+
 %h2 sum history
 .histories
   - @sum_histories.each do |history|

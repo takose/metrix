@@ -57,6 +57,40 @@ class CalculateController < ApplicationController
     render :index
   end
 
+  def tr
+    @metrix = MetrixService.new(build_metrix(params[:metrix]))
+    unless params[:metrix].empty?
+      r = /[^\d||\s||[-]]/
+      if r.match(params[:metrix])
+        @error = '書式が正しくありません'
+      else
+        @tr = @metrix.tr
+      end
+    else
+      @error = '行列を入力してください'
+    end
+    @sum_histories = SumHistory.all
+    @prod_histories = ProdHistory.all
+    render :index
+  end
+
+  def det
+    @metrix = MetrixService.new(build_metrix(params[:metrix]))
+    unless params[:metrix].empty?
+      r = /[^\d||\s||[-]]/
+      if r.match(params[:metrix])
+        @error = '書式が正しくありません'
+      else
+        @det = @metrix.det
+      end
+    else
+      @error = '行列を入力してください'
+    end
+    @sum_histories = SumHistory.all
+    @prod_histories = ProdHistory.all
+    render :index
+  end
+
   private
 
   def set_metrix

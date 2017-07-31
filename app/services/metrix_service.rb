@@ -116,6 +116,68 @@ class MetrixService
     MetrixService.new(_c)
   end
 
+  def tr
+    # float tr(){
+    #   if(n!=m) return 0;
+    #     int trace=0;
+    #     for(int x=0; x<n; x++){
+    #       trace += c[x][x];
+    #     }
+    #       return trace;
+    # }
+
+    if m != n
+      @error = '行列のサイズが正しくありません'
+      c = MetrixService.new(_c)
+      c.error = @error
+      return c
+    end
+
+    result = 0
+    m.times do |i|
+      result += @c[i][i]
+    end
+    result
+  end
+
+  def det
+    # float det(){
+    #   if(n==2 && m==2){
+    #     return c[0][0] * c[1][1] - c[1][0] * c[0][1];
+    #   } else if(n==3 && m==3){
+    #     float d = c[0][0] * c[1][1] * c[2][2] +
+    #     c[0][1] * c[1][2] * c[2][0] +
+    #     c[0][2] * c[1][0] * c[2][1] -
+    #     c[0][0] * c[1][2] * c[2][1] -
+    #     c[0][1] * c[1][0] * c[2][2] -
+    #     c[0][2] * c[1][1] * c[2][0];
+    #     return d;
+    #   } else {
+    #     return 0;
+    #   }
+    # }
+    if n == 2 && m == 2
+      c[0][0] * c[1][1] - c[1][0] * c[0][1]
+    elsif n == 3 && m ==3
+      c[0][0] * c[1][1] * c[2][2] +
+      c[0][1] * c[1][2] * c[2][0] +
+      c[0][2] * c[1][0] * c[2][1] -
+      c[0][0] * c[1][2] * c[2][1] -
+      c[0][1] * c[1][0] * c[2][2] -
+      c[0][2] * c[1][1] * c[2][0]
+    elsif n == m && n > 3
+      @error = '行列のサイズが大きすぎます'
+      c = MetrixService.new(_c)
+      c.error = @error
+      return c
+    else
+      @error = '行列のサイズが正しくありません'
+      c = MetrixService.new(_c)
+      c.error = @error
+      return c
+    end
+  end
+
   def build_string
     # String toString(){
     #   String ret = "";
