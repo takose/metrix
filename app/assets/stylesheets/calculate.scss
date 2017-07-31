@@ -1,3 +1,120 @@
 // Place all the styles related to the calculate controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  color: #333;
+  font-size: 16px;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+.container {
+  padding-left: 20%;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+.histories {
+  width: 100%;
+}
+
+.history {
+  margin: 4px;
+  height: inherit;
+  padding: 18px 18px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  display: inline-flex;
+  background-color: #fff;
+}
+
+.table {
+  padding: 10px;
+  margin: auto 0;
+}
+
+.sign {
+  margin: auto 5px;
+  height: 100%;
+}
+
+.text-box {
+  border: 2px solid #eee;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.button {
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background:none;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background-color: #fff;
+  color: #000;
+  transition: .4s;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.button:hover {
+    color:#ff7f7f;
+}
+
+.button:before,.button:after{
+  position: absolute;
+  top: 0;
+  content:'';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+
+.button:before{
+  border-left: solid 1px #ff7f7f;
+  border-top: solid 1px #ff7f7f;
+  border-bottom: solid 1px #ff7f7f;
+  left: 0;
+}
+
+.button:after{
+  content: '';
+  border-top: solid 1px #ff7f7f;
+  border-right: solid 1px #ff7f7f;
+  border-bottom: solid 1px #ff7f7f;
+  right: 0;
+}
+
+td {
+  padding: 4px 6px;
+}
+
+.line{
+  width: 1px;
+  height: 100px;
+  background-color: #333;
+}
+
+form {
+  display: flex;
+}
+
+.sign-wide {
+  font-size: 30px;
+  margin: auto 40px;
+  height: 100%;
+}

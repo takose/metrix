@@ -1,24 +1,21 @@
-# README
+# Metrix
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+行列計算をしてくれる君
 
-Things you may want to cover:
+# Getting Started
 
-* Ruby version
+```
+$ cd $YOUR_PROJECT_ROOT
+$ git clone git@github.com:wantedly/welcome-rails.git
+$ cd welcome-rails
+$ ./script/bootstrap
+$ ./script/server
+```
 
-* System dependencies
+# DEMO
 
-* Configuration
+[![https://gyazo.com/62b39f05db95b6043321c50ee58c0128](https://i.gyazo.com/62b39f05db95b6043321c50ee58c0128.gif)](https://gyazo.com/62b39f05db95b6043321c50ee58c0128)
 
-* Database creation
+# License
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+censed under [MIT License](./LICENSE).

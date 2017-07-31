@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -eux
+
+bin/rails server -p 3000

@@ -1,0 +1,2 @@
+class DetHistory < ApplicationRecord
+end

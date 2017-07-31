@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
+
+#
+# Error
+#
+error_exit() {
+  echo ""
+  echo_red "  Fix the issue and run again."
+  exit 1
+}
+
+echo_red() {
+  RED='\033[0;31m'
+  NC='\033[0m' # No Color
+  echo -e "${RED}$1${NC}"
+}
+
+#
+# Creating Environment Variable File
+#
+if test ! -f .env
+then
+  echo "  + Creating .env"
+  cp .env.sample .env
+else
+  echo "  + Environment variable file (.env) found."
+fi
+
+#
+# Install Gems
+#
+echo "  + Installing gems."
+if ERROR=`bundle install --quiet --jobs=4 --without production 2>&1`
+then
+  wait
+  echo "  + Gem installation completed."
+else
+  wait
+  echo_red "  x Gem installation failed."
+  echo $ERROR
+  error_exit
+fi
+
+#
+# Set up DB
+#
+echo "  + Set up db."
+skip_on_db_migrate=1 bundle exec rake db:create db:schema:load db:seed db:test:prepare 1>/dev/null
