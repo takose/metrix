@@ -30,7 +30,10 @@
         1
 
 - if @error
-  %p= @error
+  .error
+    %h3 error
+    %p
+      = @error
 
 %h2 sum
 = form_tag 'calculate/sum' do
@@ -145,3 +148,48 @@
               - row.split(' ').each do |column|
                 %td
                   = column
+
+%h2 tr history
+.histories
+  - @tr_histories.each do |history|
+    .history
+      .sign
+        tr
+
+      .table
+        %table
+          - history.metrix.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
+
+      .sign
+        \=
+
+      .sign
+        = history.result
+
+%h2 det history
+.histories
+  - @det_histories.each do |history|
+    .history
+      .sign
+        .line
+
+      .table
+        %table
+          - history.metrix.split("\r\n").each do |row|
+            %tr
+              - row.split(' ').each do |column|
+                %td
+                  = column
+
+      .sign
+        .line
+
+      .sign
+        \=
+
+      .sign
+        = history.result

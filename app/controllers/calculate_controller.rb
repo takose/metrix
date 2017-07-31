@@ -3,6 +3,8 @@ class CalculateController < ApplicationController
   def index
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
+    @tr_histories = TrHistory.all
+    @det_histories = DetHistory.all
   end
 
   def sum
@@ -28,6 +30,8 @@ class CalculateController < ApplicationController
     end
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
+    @tr_histories = TrHistory.all
+    @det_histories = DetHistory.all
     render :index
   end
 
@@ -54,6 +58,8 @@ class CalculateController < ApplicationController
     end
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
+    @tr_histories = TrHistory.all
+    @det_histories = DetHistory.all
     render :index
   end
 
@@ -67,6 +73,11 @@ class CalculateController < ApplicationController
         @tr = @metrix.tr
         if @tr.respond_to?(:error)
           @error = @tr.error
+        else
+          TrHistory.create(
+            metrix: @metrix.build_string,
+            result: @tr
+          )
         end
       end
     else
@@ -74,6 +85,8 @@ class CalculateController < ApplicationController
     end
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
+    @tr_histories = TrHistory.all
+    @det_histories = DetHistory.all
     render :index
   end
 
@@ -87,6 +100,11 @@ class CalculateController < ApplicationController
         @det = @metrix.det
         if @det.respond_to?(:error)
           @error = @det.error
+        else
+          DetHistory.create(
+            metrix: @metrix.build_string,
+            result: @det
+          )
         end
       end
     else
@@ -94,6 +112,8 @@ class CalculateController < ApplicationController
     end
     @sum_histories = SumHistory.all
     @prod_histories = ProdHistory.all
+    @tr_histories = TrHistory.all
+    @det_histories = DetHistory.all
     render :index
   end
 
