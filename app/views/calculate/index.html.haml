@@ -38,6 +38,8 @@
 %h2 sum
 = form_tag 'calculate/sum' do
   = text_area_tag 'metrix_a', '', class: 'text-box', size: '30x5'
+  .sign-wide
+    +
   = text_area_tag 'metrix_b', '', class: 'text-box', size: '30x5'
   = submit_tag 'calculate', class: 'button'
 
@@ -51,6 +53,8 @@
 %h2 prod
 = form_tag 'calculate/prod' do
   = text_area_tag 'metrix_a', '', class: 'text-box', size: '30x5'
+  .sign-wide
+    *
   = text_area_tag 'metrix_b', '', class: 'text-box', size: '30x5'
   = submit_tag 'calculate', class: 'button'
 

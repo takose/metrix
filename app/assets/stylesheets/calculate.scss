@@ -26,6 +26,7 @@ body {
 
 .history {
   margin: 4px;
+  height: inherit;
   padding: 18px 18px;
   text-align: center;
   border-radius: 4px;
@@ -40,7 +41,8 @@ body {
 }
 
 .sign {
-  margin: auto 0;
+  margin: auto 5px;
+  height: 100%;
 }
 
 .text-box {
@@ -54,7 +56,9 @@ body {
 }
 
 .button {
-  border:none;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   background:none;
   display: inline-block;
   padding: 0.5em 1em;
@@ -96,5 +100,21 @@ body {
 }
 
 td {
-  padding: 4px;
+  padding: 4px 6px;
+}
+
+.line{
+  width: 1px;
+  height: 100px;
+  background-color: #333;
+}
+
+form {
+  display: flex;
+}
+
+.sign-wide {
+  font-size: 30px;
+  margin: auto 40px;
+  height: 100%;
 }
